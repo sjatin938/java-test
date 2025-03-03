@@ -1,14 +1,20 @@
-pipeline{
-    agent any 
-    stages{
-        stage('Compile Stage'){
-            steps{
-               bat javac Test.java
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+               bat 'echo "Hello World"'
             }
         }
-        stage('Run Stage'){
-            steps{
-               bat java Test.java
+        stage('Build') {
+            steps {
+               bat 'javac Test.java'  // Compile Java file
+            }
+        }
+        stage('Test') {
+            steps {
+               bat 'java Test'  // Run the compiled Java class
             }
         }
     }
